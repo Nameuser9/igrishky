@@ -14,18 +14,21 @@ public class main {
     public static void main(String[] args) throws IOException {
         ArrayList<toys> shop = new ArrayList<>();
 
-
+        add_toy_alt(shop2);
         spin_the_drum_alt(shop2);
 
-        System.out.println("сыграем ещё раз?(напиши да или нет)");
-        Scanner in = new Scanner(System.in);
-        String answer = in.next();
-        if (answer == "да"){
-            spin_the_drum_alt(shop2);
+        while (true) {
+            System.out.println("сыграем ещё раз?(напиши да или нет)");
+            Scanner in = new Scanner(System.in);
+            String answer = in.next();
+            if (Objects.equals(answer, "да")) {
+                spin_the_drum_alt(shop2);
+            }
+            else{
+                System.out.println("Наслаждайтесь призом, пока можете");
+                break;
+            }
         }
-
-
-    }
 
 //    public static ArrayList add_toy(ArrayList<toys> shop){
 //
@@ -100,25 +103,47 @@ public class main {
                 if (shop2[0].quantity == 0) {
                     a = 4;
                 }
-                shop2[0].quantity += -1;
+                else {
+                    shop2[0].quantity += -1;}
+
+
             }
 
-            if (a ==1)
-                shop2[1].quantity += -1;
+            if (a ==1) {
+                if (shop2[1].quantity == 0) {
+                    a = 4;
+                }
+                else {
+                    shop2[1].quantity += -1;}
 
-            if (a ==2)
-                shop2[2].quantity += -1;
 
-            if (a ==3)
-                shop2[3].quantity += -1;
 
+            }
+            if (a ==2) {
+                if (shop2[2].quantity == 0) {
+                    a = 4;
+                }
+               else {
+                    shop2[2].quantity += -1;
+                }
+
+        }
+            if (a ==3) {
+                if (shop2[3].quantity == 0) {
+                    a = 4;
+                }
+                else {
+                    shop2[3].quantity += -1;
+                }
+
+            }
             if (a ==4){
-
                 }
 
         try {
             fileWriter = new FileWriter("gift_for_a_kid.txt",true);
-            fileWriter.write(" вы выиграли " +shop2[a].getName());
+            fileWriter.write(" вы выиграли " +shop2[a].getName() + "всего осталось "+shop2[0].quantity+"юл"
+            shop2[1].quantity+"мишек и "+shop2[2].quantity+"машинок"+shop2[3].quantity "пистолетов");
             fileWriter.write("\n");
             fileWriter.flush();
         } catch (IOException e) {
@@ -154,7 +179,7 @@ public class main {
     }
 
 
-}
+}}
 //    public static int generator(toys[] shop2) {
 //
 //        int[] number = new int[]{shop2[0].id,shop2[1].id,shop2[2].id,shop2[3].id,shop2[4].id}; // Числа
